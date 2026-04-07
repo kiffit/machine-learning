@@ -1,0 +1,14 @@
+[project]
+name = "machine-learning"
+version = "0.1.0"
+description = "Final machine learning project for CYBR-486."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "inquirerpy>=0.3.4",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.15.9",
+]
