@@ -11,3 +11,4 @@ wheels/
 
 # Saved models
 saved_models/cnn/*
+MNIST/

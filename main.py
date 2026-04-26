@@ -106,7 +106,7 @@ def save_model(model):
     """
 
     # Make file name
-    name = f"{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.model"
+    name = f"{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.pt"
 
     # Ask for file path
     print()
