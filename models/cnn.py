@@ -2,8 +2,6 @@ from models.model import Model
 
 import torch
 import torchvision
-import matplotlib.pyplot as plt
-import numpy as np
 
 
 # Build the CNN
@@ -11,18 +9,17 @@ class NCNN(torch.nn.Module):
     def __init__(self):
         super().__init__()
         self.model = torch.nn.Sequential(
-            torch.nn.Conv2d(in_channels=1, out_channels=64, kernel_size=4, padding=1),
+            torch.nn.Conv2d(in_channels=1, out_channels=16, kernel_size=4, padding=1),
             torch.nn.ReLU(),
             torch.nn.MaxPool2d(kernel_size=2),
-            torch.nn.Conv2d(in_channels=64, out_channels=128, kernel_size=4, padding=1),
+            torch.nn.Conv2d(in_channels=16, out_channels=32, kernel_size=4, padding=1),
             torch.nn.ReLU(),
             torch.nn.MaxPool2d(kernel_size=2),
-            torch.nn.Conv2d(in_channels=128, out_channels=256, kernel_size=4, padding=1),
+            torch.nn.Conv2d(in_channels=32, out_channels=64, kernel_size=4, padding=1),
             torch.nn.ReLU(),
             torch.nn.MaxPool2d(kernel_size=2),
             torch.nn.Flatten(),
-            torch.nn.Linear(1024, 10),
-            torch.nn.ReLU(),
+            torch.nn.Linear(256, 10),
         )
 
     def forward(self, x):
@@ -80,9 +77,9 @@ class CNN(Model):
         model = NCNN().to(device)
 
         # Training parameters
-        num_epochs = 5
-        learning_rate = 0.001
-        weight_decay = 0.0003  # 0.001
+        num_epochs = 20
+        learning_rate = 0.003
+        weight_decay = 0.00005  # 0.001
         criterion = torch.nn.CrossEntropyLoss()
         optimizer = torch.optim.Adam(
             model.parameters(), lr=learning_rate, weight_decay=weight_decay
@@ -133,9 +130,6 @@ class CNN(Model):
         print(
             f"The model validated with {100 * test_acc / len(self.get_validation_set().dataset):.2f}%"
         )
-
-    def test(self):
-        print("The model tested with 76.60%.")
 
     def save(self, path):
 

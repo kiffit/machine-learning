@@ -10,5 +10,4 @@ wheels/
 .venv
 
 # Saved models
-saved_models/cnn/*
 MNIST/

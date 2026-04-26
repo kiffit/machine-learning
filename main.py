@@ -24,7 +24,6 @@ def main_menu():
         choices=[
             Choice(value=train, name="Train"),
             Choice(value=validate, name="Validate"),
-            Choice(value=test, name="Test"),
             Choice(value=exit, name="Exit"),
         ],
         default=None,
@@ -75,25 +74,6 @@ def validate():
 
     # Validate model
     model.validate()
-
-    return main_menu
-
-
-def test():
-    """Tests a chosen model.
-
-    Returns:
-        main_menu: Menu for the main loop.
-    """
-
-    # Get model to train with
-    model = choose_model()
-
-    # Load model from disk
-    load_model_from_disk(model)
-
-    # Test model
-    model.test()
 
     return main_menu
 

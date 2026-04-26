@@ -13,10 +13,9 @@ class Model(ABC):
     def __init__(self, name):
         self.set_name(name)
 
-        # These will always be the same
+        # These will eventually be done in implementations
         # self.set_training_set(training_set)
         # self.set_validation_set(validation_set)
-        # self.set_testing_set(testing_set)
 
     # Methods
     @abstractmethod
@@ -27,11 +26,6 @@ class Model(ABC):
     @abstractmethod
     def validate(self):
         """Evaluates the machine learning model stored in self.__model. with self.__validation_set."""
-        pass
-
-    @abstractmethod
-    def test(self):
-        """Evaluates the machine learning model stored in self.__model with self.__testing_set."""
         pass
 
     @abstractmethod
