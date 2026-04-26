@@ -9,17 +9,13 @@ class NNN(torch.nn.Module):
     def __init__(self):
         super().__init__()
         self.model = torch.nn.Sequential(
-            # Flatten, Linear
-            torch.nn.Conv2d(in_channels=1, out_channels=16, kernel_size=4, padding=1),
-            torch.nn.ReLU(),
-            torch.nn.MaxPool2d(kernel_size=2),
-            torch.nn.Conv2d(in_channels=16, out_channels=32, kernel_size=4, padding=1),
-            torch.nn.ReLU(),
-            torch.nn.MaxPool2d(kernel_size=2),
-            torch.nn.Conv2d(in_channels=32, out_channels=64, kernel_size=4, padding=1),
-            torch.nn.ReLU(),
-            torch.nn.MaxPool2d(kernel_size=2),
             torch.nn.Flatten(),
+            torch.nn.Linear(784, 512),
+            torch.nn.ReLU(),
+            torch.nn.Linear(512, 512),
+            torch.nn.ReLU(),
+            torch.nn.Linear(512, 256),
+            torch.nn.ReLU(),
             torch.nn.Linear(256, 10),
         )
 
@@ -78,9 +74,9 @@ class NN(Model):
         model = NNN().to(device)
 
         # Training parameters
-        num_epochs = 20
-        learning_rate = 0.003
-        weight_decay = 0.00005  # 0.001
+        num_epochs = 10
+        learning_rate = 0.001
+        weight_decay = 0.0001  # 0.001
         criterion = torch.nn.CrossEntropyLoss()
         optimizer = torch.optim.Adam(
             model.parameters(), lr=learning_rate, weight_decay=weight_decay

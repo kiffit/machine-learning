@@ -2,6 +2,8 @@ from InquirerPy import inquirer
 from InquirerPy.base.control import Choice
 from InquirerPy.validator import PathValidator
 from models.cnn import CNN
+from models.nn import NN
+from models.forest import Forest
 from datetime import datetime
 from os import getcwd
 
@@ -129,8 +131,8 @@ def choose_model():
         message="Choose a machine learning model:",
         choices=[
             Choice(value=CNN, name="Convolutional Neural Network"),
-            Choice(value=CNN, name="Tree"),
-            Choice(value=CNN, name="Branch"),
+            Choice(value=NN, name="Neural Network"),
+            Choice(value=Forest, name="Random Forest"),
         ],
         default=None,
     ).execute()
