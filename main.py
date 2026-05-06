@@ -47,17 +47,14 @@ def train():
 
     # Train model
     model.train()
-
     # Give model validation
     model.validate()
-
     # Save model submenu
     print()
     if inquirer.confirm(
         message="Would you like to save this model?", default=True
     ).execute():
         save_model(model)
-
     return main_menu
 
 
